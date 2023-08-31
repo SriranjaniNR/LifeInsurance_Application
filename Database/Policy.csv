@@ -1,0 +1,5 @@
+Policy_ID,First_name,Last_name,Gender,DOB,Email,Address,Tobacco_Status,Education,Policy_Product,Life_amount,Life_cover,Annual_Premium,Payment_Method,Payment_tenure,Policy_status,Payment_Frequency,ADB_rider,CC_rider,Client_ID
+SN06,Sriranjani,NR,Female,06/05/2001,sr@mail.com,swsw,No,B.tech,Term_Product,200000,40,261.9,UPI,40,Approved,Half-Yearly,0,0,CSr41
+KP01,Krishna,P,Male,01/06/1996,kr@mail.com,asaaa,No,B.sc,Term_Product,200000,40,349.35,UPI,40,Approved,Yearly,25000,0,CKr41
+PM07,Parvathy,M,Female,07/08/1995,ss@mail.com,ADSD,No,B.sc,Term_Product,200000,40,369.9,UPI,40,Cancelled,Half-Yearly,25000,0,CPa41
+RN06,Raghupathy,NP,Male,06/07/1998,rr@mail.com,asd,No,B.sc,Term_Product,200000,40,369.9,UPI,40,Approved,Half-Yearly,25000,0,CRa41
