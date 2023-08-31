@@ -125,7 +125,7 @@ public:
 				do {
 					for (int i = 1; i <= numColumns; ++i)
 					{
-						if (result->getString(i) != "Policy_Nos")
+						if ( result->getMetaData()->getColumnName(i) != "Policy_Nos")
 						{
 							cout << result->getMetaData()->getColumnName(i) << ": " << result->getString(i) << endl;
 						}
