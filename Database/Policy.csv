@@ -1,0 +1,3 @@
+Policy_ID,First_name,Last_name,Gender,DOB,Email,Address,Tobacco_Status,Education,Policy_Product,Life_amount,Life_cover,Annual_Premium,Payment_Method,Payment_tenure,Policy_status,Payment_Frequency,ADB_rider,CC_rider,Client_ID
+KP01,Krishna,P,Male,01/06/1996,kr@mail.com,asaaa,No,B.sc,Term_Product,200000,40,349.35,UPI,40,Approved,Yearly,25000,0,CKr41
+MR07,Meera,R,Female,07/09/1997,ss@mail.com,ASASA,No,B.Tech,Term_Product,200000,40,247.35,UPI,40,Approved,Yearly,0,0,CMe41
