@@ -65,12 +65,13 @@ public :
                     {
                         cout << "Welcome:"<<username<< endl;
                     }
+                    else
+                    {
                     pstmt = con->prepareStatement("INSERT INTO Approver(UW_ID,username) VALUES(?,?)");
                     pstmt->setString(1, uwid);
                     pstmt->setString(2, username);
-
-
                     pstmt->execute();
+                    }
                 }
                 catch (sql::SQLException e)
                 {
