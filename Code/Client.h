@@ -15,7 +15,7 @@ public:
 			client_db(1,username);
 			cout << "**************************************************************************************" << endl;
 			cout << "1.Choose to create a policy\n2.Choose to Cancel policy\n3.Choose to see the policies" << endl;
-			cout << "4.Policy_Menu" << endl << "5.Client_Menu" << endl;
+			cout << "4.Policy_Menu" << endl << "5.Client_Menu" << endl << "6.To exit" << endl;
 			cin >> c;
 			cout << "**************************************************************************************" << endl;
 			switch (c)
@@ -36,8 +36,10 @@ public:
 				break;
 			case 5:
 				print_details(username);
+			case 6:
+				break;
 			}
-			if (s != 1) 
+			if (s != 1&&c!=6) 
 			{
 				cout << "Do you want see the Client menu" << endl;
 				cin >> e;
@@ -123,8 +125,10 @@ public:
 				do {
 					for (int i = 1; i <= numColumns; ++i)
 					{
-						if (result->getString(i) == "Policy_Nos") continue;
-						cout << result->getMetaData()->getColumnName(i) << ": " << result->getString(i) << endl;
+						if (result->getString(i) != "Policy_Nos")
+						{
+							cout << result->getMetaData()->getColumnName(i) << ": " << result->getString(i) << endl;
+						}
 					}
 					cout << endl;
 				} while (result->next());

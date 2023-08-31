@@ -31,7 +31,7 @@ public :
             break;
         }
     }
-    void Approver_db(int i=0,string username="")
+    void Approver_db(int i = 0, string username = "")
     {
 
         const string server = "localhost:3306";
@@ -39,10 +39,40 @@ public :
         const string pwd = "1234";
         sql::Driver* driver;
         sql::Connection* con;
+        try
+        {
+            driver = get_driver_instance();
+            con = driver->connect(server, un, pwd);
+        }
+        catch (sql::SQLException e)
+        {
+            cout << "Could not connect to server. Error message: " << e.what() << endl;
+            system("pause");
+            exit(1);
+        }
+        sql::Statement* stmt;
+        sql::PreparedStatement* pstmt;
+        sql::ResultSet* result;
+        con->setSchema("quickstartdb");
+        stmt = con->createStatement();
+        //To insert Approver Details
+        if (i == 0)
+        {
             try
             {
-                driver = get_driver_instance();
-                con = driver->connect(server, un, pwd);
+                string q = "SELECT username from Approver where username='" + username + "'";
+                result = stmt->executeQuery(q);
+                if (result->next())
+                {
+                    cout << "Welcome:" << username << endl;
+                }
+                else
+                {
+                    pstmt = con->prepareStatement("INSERT INTO Approver(UW_ID,username) VALUES(?,?)");
+                    pstmt->setString(1, uwid);
+                    pstmt->setString(2, username);
+                    pstmt->execute();
+                }
             }
             catch (sql::SQLException e)
             {
@@ -50,40 +80,11 @@ public :
                 system("pause");
                 exit(1);
             }
-            sql::Statement* stmt;
-            sql::PreparedStatement* pstmt;
-            sql::ResultSet* result;
-            con->setSchema("quickstartdb");
-            stmt = con->createStatement();
-            //To insert Approver Details
-            if (i == 0)
-            {
-                try {
-                    string q = "SELECT username from Approver where username='" +username+ "'";
-                    result = stmt->executeQuery(q);
-                    if (result->next()) 
-                    {
-                        cout << "Welcome:"<<username<< endl;
-                    }
-                    else
-                    {
-                    pstmt = con->prepareStatement("INSERT INTO Approver(UW_ID,username) VALUES(?,?)");
-                    pstmt->setString(1, uwid);
-                    pstmt->setString(2, username);
-                    pstmt->execute();
-                    }
-                }
-                catch (sql::SQLException e)
-                {
-                    cout << "Could not connect to server. Error message: " << e.what() << endl;
-                    system("pause");
-                    exit(1);
-                }
-            }
-            //To see pending policies
-            else if (i == 1)
-            {
-                string uquery = "", uquery2;
+        }
+        //To see pending policies
+        else if (i == 1)
+        {
+            string uquery = "", uquery2;
             try {
                 string query = "Select * from Policy where Policy_Status='To be issued'";
                 result = stmt->executeQuery(query);
@@ -132,10 +133,10 @@ public :
                 cout << e.what() << endl;
                 exit(1);
             }
-            }
-            
-            
-            
+        }
+
+
+
     }
     /*void give_pending()
    {
